@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甜蜜问答</title>
+    <style>
+        body {
+            background-color: #FFE1FF;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+     .question {
+            font-size: 36px;
+            color: #FF007F;
+            margin-bottom: 40px;
+        }
+
+     .answer-choice {
+            background-color: #FF69B4;
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 15px;
+            margin: 0 15px;
+            cursor: pointer;
+        }
+
+     .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+     .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+     .popup-text {
+            font-size: 30px;
+            color: #FF007F;
+        }
+
+     .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="question">你喜欢我吗？</div>
+    <a href="#" class="answer-choice" id="likeButton" onclick="handleLike()">喜欢</a>
+    <a href="#" class="answer-choice" id="dislikeButton" onclick="handleDislike()">不喜欢</a>
+
+    <div class="popup" id="lovePopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="hidePopup()">×</span>
+            <p class="popup-text">爱你</p>
+        </div>
+    </div>
+
+    <script>
+        function handleLike() {
+            document.getElementById('lovePopup').style.display = 'block';
+        }
+
+        function handleDislike() {
+            const likeButton = document.getElementById('likeButton');
+            likeButton.style.transform ='scale(1.5)';
+            setTimeout(() => {
+                likeButton.style.transform ='scale(1)';
+            }, 2000);
+        }
+
+        function hidePopup() {
+            document.getElementById('lovePopup').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
